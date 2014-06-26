@@ -23,7 +23,7 @@ public class Student extends Human {
    *        The student's gender ("male" or "female", case insensitive)             
    */                                                                               
   public Student(String name, ArrayList classes, double gpa, String gender) {
-
+    super(name);
   }
 
   /**                                                                               
@@ -31,7 +31,7 @@ public class Student extends Human {
    */
   @Override
   public String says() {                                                            
-
+    return null;
   }
                                                                                     
   /**                                                                               
@@ -39,7 +39,7 @@ public class Student extends Human {
    * <code>Student</code>.                                                          
    */                                                                               
   public String toString() {
-
+    return null;
   }
 
   /**
