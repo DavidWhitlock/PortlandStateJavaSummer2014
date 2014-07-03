@@ -1,6 +1,7 @@
 package edu.pdx.cs410J.whitlock;
 
 import edu.pdx.cs410J.InvokeMainTestCase;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -46,6 +47,36 @@ public class StudentTest extends InvokeMainTestCase
   @Test
   public void whenArgumentAreMissingUsageMessageIsPrintedToStandardError() {
     assertThatStandardErrorContains(Student.USAGE);
+  }
+
+  @Test
+  public void whenThereAreOneThousandsArgumentsExitCodeIsZero() {
+    String[] oneThousandArguments = new String[1000];
+    for (int i = 0; i < 1000; i++) {
+      oneThousandArguments[i] = String.valueOf(i);
+    }
+
+    MainMethodResult result = invokeStudentMain(oneThousandArguments);
+    assertThat(result.getExitCode(), equalTo(0));
+
+  }
+
+  @Ignore
+  @Test
+  public void whenGpaIsNotDoublePrintErrorMessage() {
+
+  }
+
+  @Ignore
+  @Test
+  public void whenGpaIsLessThanZeroPrintErrorMessage() {
+
+  }
+
+  @Ignore
+  @Test
+  public void whenGpaIsGreaterThanFourPrintErrorMessage() {
+
   }
 
 }

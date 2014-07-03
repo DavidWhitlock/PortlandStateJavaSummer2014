@@ -54,7 +54,9 @@ public class Student extends Human {
       System.err.println("Not enough command line arguments");
       System.err.println("");
       System.err.println(USAGE);
+      System.exit(1);
     }
-    System.exit(1);
+
+    System.exit(0);
   }
 }
