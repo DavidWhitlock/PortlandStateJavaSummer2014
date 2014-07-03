@@ -1,7 +1,6 @@
 package edu.pdx.cs410J.whitlock;
 
 import edu.pdx.cs410J.InvokeMainTestCase;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import static edu.pdx.cs410J.whitlock.Student.INVALID_GENDER;
@@ -107,16 +106,16 @@ public class StudentTest extends InvokeMainTestCase
     assertThatStandardErrorContains(errorMessage, "name", "female", "three-point-nine", "4", "5", "6");
   }
 
-  @Ignore
   @Test
   public void whenGpaIsLessThanZeroPrintErrorMessage() {
-
+    String errorMessage = INVALID_GPA;
+    assertThatStandardErrorContains(errorMessage, "name", "female", "-1.0", "4", "5", "6");
   }
 
-  @Ignore
   @Test
   public void whenGpaIsGreaterThanFourPrintErrorMessage() {
-
+    String errorMessage = INVALID_GPA;
+    assertThatStandardErrorContains(errorMessage, "name", "female", "5.0", "4", "5", "6");
   }
 
 }

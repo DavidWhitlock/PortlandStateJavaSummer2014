@@ -77,9 +77,12 @@ public class Student extends Human {
       gpa = Double.parseDouble(arg);
 
     } catch (NumberFormatException ex) {
-      String errorMessage = INVALID_GPA;
-      printUsageAndExit(errorMessage);
+      printUsageAndExit(INVALID_GPA);
+      throw new AssertionError("Should never get here");
+    }
 
+    if (gpa < 0.0 || gpa > 4.0) {
+      printUsageAndExit(INVALID_GPA);
       throw new AssertionError("Should never get here");
     }
 
