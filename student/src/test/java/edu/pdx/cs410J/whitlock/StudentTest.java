@@ -4,6 +4,8 @@ import edu.pdx.cs410J.InvokeMainTestCase;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import static edu.pdx.cs410J.whitlock.Student.INVALID_GENDER;
+import static edu.pdx.cs410J.whitlock.Student.INVALID_GPA;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.core.StringContains.containsString;
@@ -95,14 +97,14 @@ public class StudentTest extends InvokeMainTestCase
 
   @Test
   public void whenGenderIsNeitherMaleNorFemaleErrorMessageIsIssued() {
-    String errorMessage = "Invalid gender";
+    String errorMessage = INVALID_GENDER;
     assertThatStandardErrorContains(errorMessage, "name", "invalid", "3", "4", "5", "^");
   }
 
-  @Ignore
   @Test
   public void whenGpaIsNotDoublePrintErrorMessage() {
-
+    String errorMessage = INVALID_GPA;
+    assertThatStandardErrorContains(errorMessage, "name", "female", "three-point-nine", "4", "5", "6");
   }
 
   @Ignore
