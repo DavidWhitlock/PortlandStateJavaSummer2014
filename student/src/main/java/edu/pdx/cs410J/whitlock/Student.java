@@ -57,6 +57,12 @@ public class Student extends Human {
       System.exit(1);
     }
 
+    String gender = args[1];
+    if (!gender.equalsIgnoreCase("male") && !gender.equalsIgnoreCase("female")) {
+      System.err.println("Invalid gender");
+      System.exit(1);
+    }
+
     System.exit(0);
   }
 }
