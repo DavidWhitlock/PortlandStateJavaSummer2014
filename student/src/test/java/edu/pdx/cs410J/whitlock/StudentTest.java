@@ -18,14 +18,34 @@ public class StudentTest extends InvokeMainTestCase
 
   @Test
   public void invokingMainWithNoArgumentsHasExitCodeOf1() {
-    MainMethodResult result = invokeMain(Student.class);
+    MainMethodResult result = invokeStudentMain();
     assertThat(result.getExitCode(), equalTo(1));
+  }
+
+  private MainMethodResult invokeStudentMain(String... args) {
+    return invokeMain(Student.class, args);
   }
 
   @Test
   public void invokingMainWithNoArgumentsPrintsMissingArgumentsToStandardError() {
-    MainMethodResult result = invokeMain(Student.class);
-    assertThat(result.getErr(), containsString("Missing command line arguments"));
+    String errorMessage = "Not enough command line arguments";
+    assertThatStandardErrorContains(errorMessage);
+  }
+
+  private void assertThatStandardErrorContains(String errorMessage, String... args) {
+    MainMethodResult result = invokeStudentMain(args);
+    assertThat(result.getErr(), containsString(errorMessage));
+  }
+
+  @Test
+  public void oneCommandLineArgumentPrintsMissingArgumentsToStandardError() {
+    String errorMessage = "Not enough command line arguments";
+    assertThatStandardErrorContains(errorMessage, "fail");
+  }
+
+  @Test
+  public void whenArgumentAreMissingUsageMessageIsPrintedToStandardError() {
+    assertThatStandardErrorContains(Student.USAGE);
   }
 
 }

@@ -7,9 +7,11 @@ import java.util.ArrayList;
 /**                                                                                 
  * This class is represents a <code>Student</code>.                                 
  */                                                                                 
-public class Student extends Human {                                                
-                                                                                    
-  /**                                                                               
+public class Student extends Human {
+
+  static final String USAGE = "usage: java edu.pdx.cs410J.whitlock.Student name gender gpa class*";
+
+  /**
    * Creates a new <code>Student</code>                                             
    *                                                                                
    * @param name                                                                    
@@ -48,7 +50,11 @@ public class Student extends Human {
    * standard out by invoking its <code>toString</code> method.
    */
   public static void main(String[] args) {
-    System.err.println("Missing command line arguments");
+    if (args.length < 6) {
+      System.err.println("Not enough command line arguments");
+      System.err.println("");
+      System.err.println(USAGE);
+    }
     System.exit(1);
   }
 }
