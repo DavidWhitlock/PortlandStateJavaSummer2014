@@ -4,6 +4,8 @@ import edu.pdx.cs410J.InvokeMainTestCase;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 import static edu.pdx.cs410J.whitlock.Student.INVALID_GENDER;
 import static edu.pdx.cs410J.whitlock.Student.INVALID_GPA;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -117,6 +119,14 @@ public class StudentTest extends InvokeMainTestCase
   public void whenGpaIsGreaterThanFourPrintErrorMessage() {
     String errorMessage = INVALID_GPA;
     assertThatStandardErrorContains(errorMessage, "name", "female", "5.0", "4", "5", "6");
+  }
+
+  @Test
+  public void toStringContainsStudentName() {
+    String name = "Name";
+    Student student = new Student(name, "male", "3.45", new ArrayList());
+
+    assertThat(student.toString(), containsString(name));
   }
 
   @Ignore

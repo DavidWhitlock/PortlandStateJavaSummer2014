@@ -14,19 +14,19 @@ public class Student extends Human {
   static final String INVALID_GENDER = "Invalid gender";
 
   /**
-   * Creates a new <code>Student</code>                                             
-   *                                                                                
-   * @param name                                                                    
-   *        The student's name                                                      
-   * @param classes                                                                 
-   *        The names of the classes the student is taking.  A student              
-   *        may take zero or more classes.                                          
-   * @param gpa                                                                     
-   *        The student's grade point average                                       
-   * @param gender                                                                  
-   *        The student's gender ("male" or "female", case insensitive)             
+   * Creates a new <code>Student</code>
+   *
+   * @param name
+   *        The student's name
+   * @param classes
+   *        The names of the classes the student is taking.  A student
+   *        may take zero or more classes.
+   * @param gpa
+   *        The student's grade point average
+   * @param gender
+   *        The student's gender ("male" or "female", case insensitive)
    */                                                                               
-  public Student(String name, ArrayList classes, double gpa, String gender) {
+  public Student(String name, String classes, String gpa, ArrayList gender) {
     super(name);
   }
 
@@ -43,7 +43,7 @@ public class Student extends Human {
    * <code>Student</code>.                                                          
    */                                                                               
   public String toString() {
-    return null;
+    return this.name;
   }
 
   /**
