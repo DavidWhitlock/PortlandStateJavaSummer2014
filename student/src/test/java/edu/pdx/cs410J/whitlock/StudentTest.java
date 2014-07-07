@@ -142,21 +142,42 @@ public class StudentTest extends InvokeMainTestCase
   public void toStringContainsNameAndGpa() {
     Student student = new Student("Name", "male", 3.45, new ArrayList<String>());
 
-    assertThat(student.toString(), containsString(String.valueOf("Name has a GPA of 3.45")));
+    assertThat(student.toString(), containsString("Name has a GPA of 3.45"));
   }
 
   @Test
   public void toStringWithZeroClasses() {
     Student student = new Student("Name", "male", 3.45, new ArrayList<String>());
 
-    assertThat(student.toString(), containsString(String.valueOf("is taking 0 classes.")));
+    assertThat(student.toString(), containsString("is taking 0 classes."));
   }
 
   @Test
   public void toStringWithOneClass() {
     Student student = new Student("Name", "male", 3.45, Arrays.asList("Java"));
 
-    assertThat(student.toString(), containsString(String.valueOf("is taking 1 class: Java.")));
+    assertThat(student.toString(), containsString("is taking 1 class: Java."));
+  }
+
+  @Test
+  public void toStringWithTwoClasses() {
+    Student student = new Student("Name", "male", 3.45, Arrays.asList("Java", "Operating Systems"));
+
+    assertThat(student.toString(), containsString("is taking 2 classes: Java and Operating Systems."));
+  }
+
+  @Test
+  public void toStringWithThreeClasses() {
+    Student student = new Student("Name", "male", 3.45, Arrays.asList("Java", "Operating Systems", "Compilers"));
+
+    assertThat(student.toString(), containsString("is taking 3 classes: Java, Operating Systems, and Compilers."));
+  }
+
+  @Test
+  public void toStringWithFourClasses() {
+    Student student = new Student("Name", "male", 3.45, Arrays.asList("Java", "Operating Systems", "Compilers", "Poetry"));
+
+    assertThat(student.toString(), containsString("is taking 4 classes: Java, Operating Systems, Compilers, and Poetry."));
   }
 
   @Ignore
