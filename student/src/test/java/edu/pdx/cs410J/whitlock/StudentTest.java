@@ -124,9 +124,24 @@ public class StudentTest extends InvokeMainTestCase
   @Test
   public void toStringContainsStudentName() {
     String name = "Name";
-    Student student = new Student(name, "male", "3.45", new ArrayList());
+    Student student = new Student(name, "male", 3.45, new ArrayList());
 
     assertThat(student.toString(), containsString(name));
+  }
+
+  @Test
+  public void toStringContainsGpa() {
+    double gpa = 3.45;
+    Student student = new Student("Name", "male", gpa, new ArrayList());
+
+    assertThat(student.toString(), containsString(String.valueOf(gpa)));
+  }
+
+  @Test
+  public void toStringContainsNameAndGpa() {
+    Student student = new Student("Name", "male", 3.45, new ArrayList());
+
+    assertThat(student.toString(), containsString(String.valueOf("Name has a GPA of 3.45")));
   }
 
   @Ignore

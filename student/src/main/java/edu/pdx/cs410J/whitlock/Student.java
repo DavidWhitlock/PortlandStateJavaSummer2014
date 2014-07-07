@@ -12,22 +12,23 @@ public class Student extends Human {
   static final String USAGE = "usage: java edu.pdx.cs410J.whitlock.Student name gender gpa class*";
   static final String INVALID_GPA = "GPA must be a number between 0.0 and 4.0";
   static final String INVALID_GENDER = "Invalid gender";
+  private final double gpa;
 
   /**
    * Creates a new <code>Student</code>
-   *
-   * @param name
+   *  @param name
    *        The student's name
+   * @param gender
+   *        The student's gender ("male" or "female", case insensitive)
+   * @param gpa
+ *        The student's grade point average
    * @param classes
    *        The names of the classes the student is taking.  A student
    *        may take zero or more classes.
-   * @param gpa
-   *        The student's grade point average
-   * @param gender
-   *        The student's gender ("male" or "female", case insensitive)
-   */                                                                               
-  public Student(String name, String classes, String gpa, ArrayList gender) {
+   */
+  public Student(String name, String gender, double gpa, ArrayList classes) {
     super(name);
+    this.gpa = gpa;
   }
 
   /**                                                                               
@@ -43,7 +44,7 @@ public class Student extends Human {
    * <code>Student</code>.                                                          
    */                                                                               
   public String toString() {
-    return this.name;
+    return this.name + " has a GPA of " + this.gpa;
   }
 
   /**
