@@ -2,8 +2,8 @@ package edu.pdx.cs410J.whitlock;
 
 import edu.pdx.cs410J.lang.Human;
 
-import java.util.ArrayList;
-                                                                                    
+import java.util.List;
+
 /**                                                                                 
  * This class is represents a <code>Student</code>.                                 
  */                                                                                 
@@ -13,6 +13,7 @@ public class Student extends Human {
   static final String INVALID_GPA = "GPA must be a number between 0.0 and 4.0";
   static final String INVALID_GENDER = "Invalid gender";
   private final double gpa;
+  private final List<String> classes;
 
   /**
    * Creates a new <code>Student</code>
@@ -26,9 +27,10 @@ public class Student extends Human {
    *        The names of the classes the student is taking.  A student
    *        may take zero or more classes.
    */
-  public Student(String name, String gender, double gpa, ArrayList classes) {
+  public Student(String name, String gender, double gpa, List<String> classes) {
     super(name);
     this.gpa = gpa;
+    this.classes = classes;
   }
 
   /**                                                                               
@@ -44,7 +46,28 @@ public class Student extends Human {
    * <code>Student</code>.                                                          
    */                                                                               
   public String toString() {
-    return this.name + " has a GPA of " + this.gpa;
+    return this.name + " has a GPA of " + this.gpa + " and is taking " + formatClasses();
+  }
+
+  private String formatClasses() {
+    StringBuilder sb = new StringBuilder();
+    sb.append(this.classes.size());
+
+    if (this.classes.size() == 1) {
+      sb.append(" class");
+
+    } else {
+      sb.append(" classes");
+    }
+
+    if (this.classes.size() > 0) {
+      sb.append(": ");
+      sb.append(this.classes.get(0));
+    }
+
+    sb.append(".");
+
+    return sb.toString();
   }
 
   /**
