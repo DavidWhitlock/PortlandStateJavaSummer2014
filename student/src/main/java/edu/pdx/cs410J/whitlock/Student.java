@@ -13,28 +13,26 @@ public class Student extends Human {
   static final String USAGE = "usage: java edu.pdx.cs410J.whitlock.Student name gender gpa class*";
   static final String INVALID_GPA = "GPA must be a number between 0.0 and 4.0";
   static final String INVALID_GENDER = "Invalid gender";
-  private final List classes;
-  private final String gender;
-  private double gpa;
+  private final double gpa;
+  private final List<String> classes;
+  private final Gender gender;
 
   /**
-   * Creates a new <code>Student</code>                                             
-   *                                                                                
-   * @param name                                                                    
-   *        The student's name                                                      
-   * @param classes                                                                 
-   *        The names of the classes the student is taking.  A student              
-   *        may take zero or more classes.                                          
-   * @param gpa                                                                     
-   *        The student's grade point average                                       
-   * @param gender                                                                  
-   *        The student's gender ("male" or "female", case insensitive)             
-   */                                                                               
-  public Student(String name, ArrayList classes, double gpa, String gender) {
+   * Creates a new <code>Student</code>
+   *  @param name
+   *        The student's name
+   * @param gender
+   *        The student's gender ("male" or "female", case insensitive)
+   * @param gpa
+ *        The student's grade point average
+   * @param classes
+   *        The names of the classes the student is taking.  A student
+   *        may take zero or more classes.
+   */
+  public Student(String name, Gender gender, double gpa, List<String> classes) {
     super(name);
-
-    this.classes = classes;
     this.gpa = gpa;
+    this.classes = classes;
     this.gender = gender;
   }
 
@@ -51,32 +49,54 @@ public class Student extends Human {
    * <code>Student</code>.
    */
   public String toString() {
-    return getName() + " has a GPA of " + getGpa() + " and is taking " + this.classes.size() +
-      " classes: " + formatClasses() + ". " + getGenderPronoun() + " says \"" + says() + "\".";
+    return this.name + " has a GPA of " + this.gpa + " and is taking " + formatClasses() + "  " +
+      genderPronoun() + " says \"" + says() + "\".";
+  }
+
+  private String genderPronoun() {
+    if (this.gender.equals(Gender.FEMALE)) {
+      return "She";
+
+    } else {
+      return "He";
+    }
   }
 
   private String formatClasses() {
     StringBuilder sb = new StringBuilder();
-    for (int i = 0 ; i < this.classes.size(); i++) {
-      sb.append(this.classes.get(i));
-      if (i < this.classes.size() - 1) {
-        sb.append(", ");
-      }
+    sb.append(this.classes.size());
 
-      if (i == this.classes.size() - 2) {
-        sb.append("and ");
-      }
-    }
-    return sb.toString();
-  }
-
-  private String getGenderPronoun() {
-    if (gender.equalsIgnoreCase("male")) {
-      return "He";
+    if (this.classes.size() == 1) {
+      sb.append(" class");
 
     } else {
-      return "She";
+      sb.append(" classes");
     }
+
+    if (this.classes.size() > 0) {
+      sb.append(": ");
+
+      for (int i = 0; i < this.classes.size(); i++) {
+        sb.append(this.classes.get(i));
+
+        if (i <= this.classes.size() - 2) {
+          if (this.classes.size() == 2) {
+            sb.append(" ");
+
+          } else {
+            sb.append(", ");
+          }
+        }
+
+        if (i == this.classes.size() - 2) {
+          sb.append("and ");
+        }
+      }
+    }
+
+    sb.append(".");
+
+    return sb.toString();
   }
 
   /**
@@ -92,15 +112,15 @@ public class Student extends Human {
     }
 
     String name = args[0];
-    String gender = validateGender(args[1]);
+    Gender gender = validateGender(args[1]);
     double gpa = validateGpa(args[2]);
 
-    ArrayList<String> classes = new ArrayList<>();
+    List<String> classes = new ArrayList<>();
     for (int i = 3; i < args.length; i++) {
       classes.add(args[i]);
     }
 
-    Student student = new Student(name, classes, gpa, gender);
+    Student student = new Student(name, gender, gpa, classes);
     System.out.println(student.toString());
 
     System.exit(0);
@@ -139,15 +159,20 @@ public class Student extends Human {
     System.exit(1);
   }
 
-  private static String validateGender(String gender) {
-    if (!gender.equalsIgnoreCase("male") && !gender.equalsIgnoreCase("female")) {
-      printUsageAndExit(INVALID_GENDER);
-    }
+  private static Gender validateGender(String gender) {
+    if (gender.equalsIgnoreCase("male")) {
+      return Gender.MALE;
 
-    return gender;
+    } else if (gender.equalsIgnoreCase("female")) {
+      return Gender.FEMALE;
+
+    } else {
+      printUsageAndExit(INVALID_GENDER);
+      throw new AssertionError("Shouldn't get here");
+    }
   }
 
-  public double getGpa() {
-    return gpa;
+  public enum Gender {
+    MALE, FEMALE
   }
 }
