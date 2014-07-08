@@ -14,7 +14,7 @@ public class Student extends Human {
   static final String INVALID_GENDER = "Invalid gender";
   private final double gpa;
   private final List<String> classes;
-  private final String gender;
+  private final Gender gender;
 
   /**
    * Creates a new <code>Student</code>
@@ -28,7 +28,7 @@ public class Student extends Human {
    *        The names of the classes the student is taking.  A student
    *        may take zero or more classes.
    */
-  public Student(String name, String gender, double gpa, List<String> classes) {
+  public Student(String name, Gender gender, double gpa, List<String> classes) {
     super(name);
     this.gpa = gpa;
     this.classes = classes;
@@ -53,13 +53,12 @@ public class Student extends Human {
   }
 
   private String genderPronoun() {
-    if (this.gender.equals("female")) {
+    if (this.gender.equals(Gender.FEMALE)) {
       return "She";
 
     } else {
       return "He";
     }
-
   }
 
   private String formatClasses() {
@@ -156,5 +155,9 @@ public class Student extends Human {
     }
 
     return gender;
+  }
+
+  public enum Gender {
+    MALE, FEMALE
   }
 }

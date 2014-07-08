@@ -7,6 +7,8 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import static edu.pdx.cs410J.whitlock.Student.Gender.FEMALE;
+import static edu.pdx.cs410J.whitlock.Student.Gender.MALE;
 import static edu.pdx.cs410J.whitlock.Student.INVALID_GENDER;
 import static edu.pdx.cs410J.whitlock.Student.INVALID_GPA;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -125,7 +127,7 @@ public class StudentTest extends InvokeMainTestCase
   @Test
   public void toStringContainsStudentName() {
     String name = "Name";
-    Student student = new Student(name, "male", 3.45, new ArrayList<String>());
+    Student student = new Student(name, MALE, 3.45, new ArrayList<String>());
 
     assertThat(student.toString(), containsString(name));
   }
@@ -133,63 +135,63 @@ public class StudentTest extends InvokeMainTestCase
   @Test
   public void toStringContainsGpa() {
     double gpa = 3.45;
-    Student student = new Student("Name", "male", gpa, new ArrayList<String>());
+    Student student = new Student("Name", MALE, gpa, new ArrayList<String>());
 
     assertThat(student.toString(), containsString(String.valueOf(gpa)));
   }
 
   @Test
   public void toStringContainsNameAndGpa() {
-    Student student = new Student("Name", "male", 3.45, new ArrayList<String>());
+    Student student = new Student("Name", FEMALE, 3.45, new ArrayList<String>());
 
     assertThat(student.toString(), containsString("Name has a GPA of 3.45"));
   }
 
   @Test
   public void toStringWithZeroClasses() {
-    Student student = new Student("Name", "male", 3.45, new ArrayList<String>());
+    Student student = new Student("Name", FEMALE, 3.45, new ArrayList<String>());
 
     assertThat(student.toString(), containsString("is taking 0 classes."));
   }
 
   @Test
   public void toStringWithOneClass() {
-    Student student = new Student("Name", "male", 3.45, Arrays.asList("Java"));
+    Student student = new Student("Name", FEMALE, 3.45, Arrays.asList("Java"));
 
     assertThat(student.toString(), containsString("is taking 1 class: Java."));
   }
 
   @Test
   public void toStringWithTwoClasses() {
-    Student student = new Student("Name", "male", 3.45, Arrays.asList("Java", "Operating Systems"));
+    Student student = new Student("Name", MALE, 3.45, Arrays.asList("Java", "Operating Systems"));
 
     assertThat(student.toString(), containsString("is taking 2 classes: Java and Operating Systems."));
   }
 
   @Test
   public void toStringWithThreeClasses() {
-    Student student = new Student("Name", "male", 3.45, Arrays.asList("Java", "Operating Systems", "Compilers"));
+    Student student = new Student("Name", MALE, 3.45, Arrays.asList("Java", "Operating Systems", "Compilers"));
 
     assertThat(student.toString(), containsString("is taking 3 classes: Java, Operating Systems, and Compilers."));
   }
 
   @Test
   public void toStringWithFourClasses() {
-    Student student = new Student("Name", "male", 3.45, Arrays.asList("Java", "Operating Systems", "Compilers", "Poetry"));
+    Student student = new Student("Name", MALE, 3.45, Arrays.asList("Java", "Operating Systems", "Compilers", "Poetry"));
 
     assertThat(student.toString(), containsString("is taking 4 classes: Java, Operating Systems, Compilers, and Poetry."));
   }
 
   @Test
   public void toStringWithFemaleStudentContainsShePronoun() {
-    Student student = new Student("Name", "female", 3.45, new ArrayList<String>());
+    Student student = new Student("Name", FEMALE, 3.45, new ArrayList<String>());
 
     assertThat(student.toString(), containsString("She says"));
   }
 
   @Test
   public void toStringWithMaleStudentContainsHePronoun() {
-    Student student = new Student("Name", "male", 3.45, new ArrayList<String>());
+    Student student = new Student("Name", MALE, 3.45, new ArrayList<String>());
 
     assertThat(student.toString(), containsString("He says"));
   }
