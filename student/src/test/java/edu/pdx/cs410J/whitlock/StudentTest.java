@@ -196,6 +196,13 @@ public class StudentTest extends InvokeMainTestCase
     assertThat(student.toString(), containsString("He says"));
   }
 
+  @Test
+  public void allStudentsSayThisClassIsTooMuchWorkInToString() {
+    Student student = new Student("Name", MALE, 3.45, new ArrayList<String>());
+
+    assertThat(student.toString(), containsString("\"This class is too much work\"."));
+  }
+
   @Ignore
   @Test
   public void commandLineExampleFromAssignment() {

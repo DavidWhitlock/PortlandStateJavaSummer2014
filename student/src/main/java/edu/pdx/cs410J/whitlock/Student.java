@@ -40,7 +40,7 @@ public class Student extends Human {
    */
   @Override
   public String says() {                                                            
-    return null;
+    return "This class is too much work";
   }
                                                                                     
   /**                                                                               
@@ -49,7 +49,7 @@ public class Student extends Human {
    */                                                                               
   public String toString() {
     return this.name + " has a GPA of " + this.gpa + " and is taking " + formatClasses() + "  " +
-      genderPronoun() + " says";
+      genderPronoun() + " says \"" + says() + "\".";
   }
 
   private String genderPronoun() {
