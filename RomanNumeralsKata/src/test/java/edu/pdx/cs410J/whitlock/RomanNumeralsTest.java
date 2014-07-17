@@ -27,4 +27,27 @@ public class RomanNumeralsTest {
     assertThat(RomanNumerals.romanNumeralFor(10), equalTo("X"));
   }
 
+  @Test
+  public void romanNumeralsFrom11To20() {
+    assertThat(RomanNumerals.romanNumeralFor(11), equalTo("XI"));
+    assertThat(RomanNumerals.romanNumeralFor(12), equalTo("XII"));
+    assertThat(RomanNumerals.romanNumeralFor(13), equalTo("XIII"));
+    assertThat(RomanNumerals.romanNumeralFor(14), equalTo("XIV"));
+    assertThat(RomanNumerals.romanNumeralFor(15), equalTo("XV"));
+    assertThat(RomanNumerals.romanNumeralFor(16), equalTo("XVI"));
+    assertThat(RomanNumerals.romanNumeralFor(17), equalTo("XVII"));
+    assertThat(RomanNumerals.romanNumeralFor(18), equalTo("XVIII"));
+    assertThat(RomanNumerals.romanNumeralFor(19), equalTo("XIX"));
+    assertThat(RomanNumerals.romanNumeralFor(20), equalTo("XX"));
+  }
+
+  @Test
+  public void romanNumeralsFor30And40And50() {
+    assertThat(RomanNumerals.romanNumeralFor(30), equalTo("XXX"));
+    assertThat(RomanNumerals.romanNumeralFor(40), equalTo("XL"));
+    assertThat(RomanNumerals.romanNumeralFor(47), equalTo("XLVII"));
+    assertThat(RomanNumerals.romanNumeralFor(50), equalTo("L"));
+    assertThat(RomanNumerals.romanNumeralFor(63), equalTo("LXIII"));
+  }
+
 }

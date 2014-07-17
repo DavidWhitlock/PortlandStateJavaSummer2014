@@ -14,7 +14,15 @@ public class RomanNumerals {
 
   private static void romanNumeralFor(int number, StringBuilder sb) {
 
-    if (number >= 10) {
+    if (number >= 50) {
+      sb.append("L");
+      romanNumeralFor(number - 50, sb);
+
+    } else if (number >= 40) {
+      sb.append("XL");
+      romanNumeralFor(number - 40, sb);
+
+    } else if (number >= 10) {
       sb.append("X");
       romanNumeralFor(number - 10, sb);
 
