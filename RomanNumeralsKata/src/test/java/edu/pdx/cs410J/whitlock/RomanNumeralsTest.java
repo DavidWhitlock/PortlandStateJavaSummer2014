@@ -18,4 +18,14 @@ public class RomanNumeralsTest {
     assertThat(RomanNumerals.romanNumeralFor(1), equalTo("I"));
   }
 
+  @Test
+  public void romanNumeralFor2IsII() {
+    assertThat(RomanNumerals.romanNumeralFor(2), equalTo("II"));
+  }
+
+  @Test
+  public void romanNumeralFor3IsIII() {
+    assertThat(RomanNumerals.romanNumeralFor(3), equalTo("III"));
+  }
+
 }
