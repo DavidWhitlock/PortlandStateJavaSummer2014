@@ -18,6 +18,13 @@ public class RomanNumeralsTest {
     assertThat(RomanNumerals.romanNumeralFor(1), equalTo("I"));
     assertThat(RomanNumerals.romanNumeralFor(2), equalTo("II"));
     assertThat(RomanNumerals.romanNumeralFor(3), equalTo("III"));
+    assertThat(RomanNumerals.romanNumeralFor(4), equalTo("IV"));
+    assertThat(RomanNumerals.romanNumeralFor(5), equalTo("V"));
+    assertThat(RomanNumerals.romanNumeralFor(6), equalTo("VI"));
+    assertThat(RomanNumerals.romanNumeralFor(7), equalTo("VII"));
+    assertThat(RomanNumerals.romanNumeralFor(8), equalTo("VIII"));
+    assertThat(RomanNumerals.romanNumeralFor(9), equalTo("IX"));
+    assertThat(RomanNumerals.romanNumeralFor(10), equalTo("X"));
   }
 
 }
