@@ -63,7 +63,11 @@ public class RomanNumeralsTest {
     assertThat(RomanNumerals.romanNumeralFor(247), equalTo("CCXLVII"));
     assertThat(RomanNumerals.romanNumeralFor(492), equalTo("CDXCII"));
     assertThat(RomanNumerals.romanNumeralFor(500), equalTo("D"));
+  }
 
+  @Test
+  public void romanNumeralsAround1000() {
+    assertThat(RomanNumerals.romanNumeralFor(3999), equalTo("MMMCMXCIX"));
   }
 
 }

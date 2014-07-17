@@ -18,6 +18,8 @@ public class RomanNumerals {
   private static Map<Integer, String> numeralsForGreaterThan = new LinkedHashMap<>();
 
   static {
+    numeralsForGreaterThan.put(1000, "M");
+    numeralsForGreaterThan.put(900, "CM");
     numeralsForGreaterThan.put(500, "D");
     numeralsForGreaterThan.put(400, "CD");
     numeralsForGreaterThan.put(100, "C");
