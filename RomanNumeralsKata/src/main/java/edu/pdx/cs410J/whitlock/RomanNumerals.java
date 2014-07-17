@@ -42,21 +42,21 @@ public class RomanNumerals {
       sb.append("X");
       romanNumeralFor(number - 10, sb);
 
-    } else if (number == 9) {
+    } else if (number >= 9) {
       sb.append("IX");
+      romanNumeralFor(number - 9, sb);
 
     } else if (number >= 5) {
       sb.append("V");
       romanNumeralFor(number - 5, sb);
 
-    } else if (number == 4) {
+    } else if (number >= 4) {
       sb.append("IV");
+      romanNumeralFor(number - 4, sb);
 
-    } else {
-      assert number < 4;
-      for (int i = 1; i <= number; i++) {
-        sb.append("I");
-      }
+    } else if (number >= 1) {
+      sb.append("I");
+      romanNumeralFor(number - 1, sb);
     }
 
   }
