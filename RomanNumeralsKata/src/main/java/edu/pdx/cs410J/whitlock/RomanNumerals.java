@@ -1,5 +1,8 @@
 package edu.pdx.cs410J.whitlock;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 /**
  * This class is represents a <code>RomanNumerals</code>.
  */                                                                                 
@@ -12,51 +15,30 @@ public class RomanNumerals {
     return sb.toString();
   }
 
+  private static Map<Integer, String> numeralsForGreaterThan = new LinkedHashMap<>();
+
+  static {
+    numeralsForGreaterThan.put(500, "D");
+    numeralsForGreaterThan.put(400, "CD");
+    numeralsForGreaterThan.put(100, "C");
+    numeralsForGreaterThan.put(90, "XC");
+    numeralsForGreaterThan.put(50, "L");
+    numeralsForGreaterThan.put(40, "XL");
+    numeralsForGreaterThan.put(10, "X");
+    numeralsForGreaterThan.put(9, "IX");
+    numeralsForGreaterThan.put(5, "V");
+    numeralsForGreaterThan.put(4, "IV");
+    numeralsForGreaterThan.put(1, "I");
+  }
+
   private static void romanNumeralFor(int number, StringBuilder sb) {
 
-    if (number >= 500) {
-      sb.append("D");
-      romanNumeralFor(number - 500, sb);
-
-    } else if (number >= 400) {
-      sb.append("CD");
-      romanNumeralFor(number - 400, sb);
-
-    } else if (number >= 100) {
-      sb.append("C");
-      romanNumeralFor(number - 100, sb);
-
-    } else if (number >= 90) {
-      sb.append("XC");
-      romanNumeralFor(number - 90, sb);
-
-    } else if (number >= 50) {
-      sb.append("L");
-      romanNumeralFor(number - 50, sb);
-
-    } else if (number >= 40) {
-      sb.append("XL");
-      romanNumeralFor(number - 40, sb);
-
-    } else if (number >= 10) {
-      sb.append("X");
-      romanNumeralFor(number - 10, sb);
-
-    } else if (number >= 9) {
-      sb.append("IX");
-      romanNumeralFor(number - 9, sb);
-
-    } else if (number >= 5) {
-      sb.append("V");
-      romanNumeralFor(number - 5, sb);
-
-    } else if (number >= 4) {
-      sb.append("IV");
-      romanNumeralFor(number - 4, sb);
-
-    } else if (number >= 1) {
-      sb.append("I");
-      romanNumeralFor(number - 1, sb);
+    for (int max : numeralsForGreaterThan.keySet()) {
+      if (number >= max) {
+        sb.append(numeralsForGreaterThan.get(max));
+        romanNumeralFor(number - max, sb);
+        break;
+      }
     }
 
   }
