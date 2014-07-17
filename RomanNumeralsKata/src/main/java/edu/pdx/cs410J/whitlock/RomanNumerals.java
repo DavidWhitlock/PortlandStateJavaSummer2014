@@ -14,7 +14,23 @@ public class RomanNumerals {
 
   private static void romanNumeralFor(int number, StringBuilder sb) {
 
-    if (number >= 50) {
+    if (number >= 500) {
+      sb.append("D");
+      romanNumeralFor(number - 500, sb);
+
+    } else if (number >= 400) {
+      sb.append("CD");
+      romanNumeralFor(number - 400, sb);
+
+    } else if (number >= 100) {
+      sb.append("C");
+      romanNumeralFor(number - 100, sb);
+
+    } else if (number >= 90) {
+      sb.append("XC");
+      romanNumeralFor(number - 90, sb);
+
+    } else if (number >= 50) {
       sb.append("L");
       romanNumeralFor(number - 50, sb);
 

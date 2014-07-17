@@ -50,4 +50,20 @@ public class RomanNumeralsTest {
     assertThat(RomanNumerals.romanNumeralFor(63), equalTo("LXIII"));
   }
 
+  @Test
+  public void romanNumeralsBetween50And100() {
+    assertThat(RomanNumerals.romanNumeralFor(88), equalTo("LXXXVIII"));
+    assertThat(RomanNumerals.romanNumeralFor(99), equalTo("XCIX"));
+    assertThat(RomanNumerals.romanNumeralFor(100), equalTo("C"));
+    assertThat(RomanNumerals.romanNumeralFor(247), equalTo("CCXLVII"));
+  }
+
+  @Test
+  public void romanNumeralsAround500() {
+    assertThat(RomanNumerals.romanNumeralFor(247), equalTo("CCXLVII"));
+    assertThat(RomanNumerals.romanNumeralFor(492), equalTo("CDXCII"));
+    assertThat(RomanNumerals.romanNumeralFor(500), equalTo("D"));
+
+  }
+
 }
