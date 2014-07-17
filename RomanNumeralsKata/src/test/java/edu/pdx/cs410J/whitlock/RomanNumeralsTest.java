@@ -14,17 +14,9 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class RomanNumeralsTest {
 
   @Test
-  public void romanNumeralFor1IsI() {
+  public void romanNumeralsFrom1To10() {
     assertThat(RomanNumerals.romanNumeralFor(1), equalTo("I"));
-  }
-
-  @Test
-  public void romanNumeralFor2IsII() {
     assertThat(RomanNumerals.romanNumeralFor(2), equalTo("II"));
-  }
-
-  @Test
-  public void romanNumeralFor3IsIII() {
     assertThat(RomanNumerals.romanNumeralFor(3), equalTo("III"));
   }
 
