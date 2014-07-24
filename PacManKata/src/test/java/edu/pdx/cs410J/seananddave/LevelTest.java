@@ -52,5 +52,35 @@ public class LevelTest extends InvokeMainTestCase
 
   // Validate that the grid is a rectangle
 
+  @Test(expected = IllegalStateException.class)
+  public void nonRectangleLevelThrowsIllegalStateException() {
+    LevelBuilder lb = new LevelBuilder();
+    lb.addLine("+--+");
+    lb.addLine("|<|");
+    lb.addLine("+-+");
+
+    lb.create();
+  }
+
+  @Test(expected = IllegalStateException.class)
+  public void noPacManOnLevelThrowsIllegalStateException() {
+    LevelBuilder lb = new LevelBuilder();
+    lb.addLine("+--+");
+    lb.addLine("|  |");
+    lb.addLine("+--+");
+
+    lb.create();
+  }
+
+  @Test(expected = IllegalStateException.class)
+  public void twoPacMenOnLevelThrowsIllegalStateException() {
+    LevelBuilder lb = new LevelBuilder();
+    lb.addLine("+--+");
+    lb.addLine("|<^|");
+    lb.addLine("+--+");
+
+    lb.create();
+  }
+
   // Validate that there is only one PacMan on the Level
 }

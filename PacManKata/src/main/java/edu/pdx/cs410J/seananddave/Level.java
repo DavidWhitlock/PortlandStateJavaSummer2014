@@ -14,16 +14,28 @@ public class Level{
   }
 
   private PacMan findPacManOnGrid() {
+    PacMan pacman = null;
+
     for (int i = 0; i < grid.length; i++) {
       for (int j = 0; j < grid[i].length; j++) {
         char c = grid[i][j];
         if (isPacMan(c)) {
-          return new PacMan(i, j, getPacManDirection(c));
+          if (pacman == null) {
+            pacman = new PacMan(i, j, getPacManDirection(c));
+
+          } else {
+            throw new IllegalStateException("Can only have one PacMan on a Level");
+          }
         }
       }
     }
 
-    throw new IllegalStateException("No PacMan on Level");
+    if (pacman != null) {
+      return pacman;
+
+    } else {
+      throw new IllegalStateException("No PacMan on Level");
+    }
   }
 
   private boolean isPacMan(char c) {

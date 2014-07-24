@@ -13,9 +13,19 @@ public class LevelBuilder {
   }
 
   public Level create() {
+    int boardWidth = 0;
     char[][] grid = new char[lines.size()][lines.get(0).length()];
     for (int i = 0; i < lines.size(); i++) {
       String line = lines.get(i);
+
+      if (i == 0){
+        boardWidth = line.length();
+
+      } else if (line.length() != boardWidth){
+        throw new IllegalStateException("Error at line :" + i + 1 + " expected width: " +
+          boardWidth + " given width:" + line.length());
+      }
+
       for (int j = 0; j < line.length(); j++) {
         grid[i][j] = line.charAt(j);
       }
