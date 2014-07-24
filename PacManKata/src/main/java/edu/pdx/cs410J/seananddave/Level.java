@@ -30,10 +30,16 @@ public class Level{
     return getPacManDirection(c) != null;
   }
 
-  private Direction getPacManDirection(char c) {
+  static Direction getPacManDirection(char c) {
     switch(c) {
       case '<':
-        return Direction.Right;
+        return Direction.RIGHT;
+      case '>':
+        return Direction.LEFT;
+      case 'V':
+        return Direction.UP;
+      case '^':
+        return Direction.DOWN;
       default:
         return null;
     }

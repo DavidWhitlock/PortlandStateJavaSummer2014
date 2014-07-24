@@ -26,8 +26,29 @@ public class LevelTest extends InvokeMainTestCase
 
     PacMan pacman = alevel.getPacMan();
 
-    assertThat(pacman.getDirection(), equalTo(Direction.Right));
+    assertThat(pacman.getDirection(), equalTo(Direction.RIGHT));
   }
+
+  @Test
+  public void lessThanPacManIsRight() {
+    assertThat(Level.getPacManDirection('<'), equalTo(Direction.RIGHT));
+  }
+
+  @Test
+  public void greaterThanPacManIsLeft() {
+    assertThat(Level.getPacManDirection('>'), equalTo(Direction.LEFT));
+  }
+
+  @Test
+  public void veeIsPacManIsUp() {
+    assertThat(Level.getPacManDirection('V'), equalTo(Direction.UP));
+  }
+
+  @Test
+  public void carretIsPacManIsUp() {
+    assertThat(Level.getPacManDirection('^'), equalTo(Direction.DOWN));
+  }
+
 
   // Validate that the grid is a rectangle
 
