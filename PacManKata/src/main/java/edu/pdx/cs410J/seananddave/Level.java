@@ -60,4 +60,9 @@ public class Level{
   public PacMan getPacMan() {
     return this.pacman;
   }
+
+  public void movePacManForward() {
+
+
+  }
 }

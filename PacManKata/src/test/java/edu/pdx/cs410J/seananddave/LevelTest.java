@@ -80,4 +80,24 @@ public class LevelTest extends InvokeMainTestCase
     lb.create();
   }
 
+  @Test
+  public void pacManCannotMoveRight() {
+    LevelBuilder lb = new LevelBuilder();
+    lb.addLine("+-+");
+    lb.addLine("|<|");
+    lb.addLine("+-+");
+
+    Level level = lb.create();
+
+    PacMan pacman = level.getPacMan();
+    PacMan.Position originalPosition = pacman.getPosition();
+    assertThat(originalPosition.getXCoordinate(), equalTo(1));
+    assertThat(originalPosition.getYCoordinate(), equalTo(1));
+
+    level.movePacManForward();
+
+    assertThat(originalPosition, equalTo(pacman.getPosition()));
+
+  }
+
 }
