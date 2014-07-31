@@ -1,7 +1,7 @@
 package edu.pdx.cs410J.seananddave;
 
 public class PacMan {
-  private final Direction direction;
+  private Direction direction;
   private int xCoordinate;
   private int yCoordinate;
 
@@ -25,6 +25,10 @@ public class PacMan {
 
   public Position getPosition() {
     return new Position(xCoordinate, yCoordinate);
+  }
+
+  public void setDirection(Direction direction) {
+    this.direction = direction;
   }
 
   class Position {
