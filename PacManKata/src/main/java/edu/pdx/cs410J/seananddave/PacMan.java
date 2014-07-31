@@ -7,8 +7,16 @@ public class PacMan {
 
   public PacMan(int xCoordinate, int yCoordinate, Direction direction) {
     this.direction = direction;
-    this.xCoordinate = xCoordinate;
+    setXCoordinate(xCoordinate);
+    setYCoordinate(yCoordinate);
+  }
+
+  void setYCoordinate(int yCoordinate) {
     this.yCoordinate = yCoordinate;
+  }
+
+  void setXCoordinate(int xCoordinate) {
+    this.xCoordinate = xCoordinate;
   }
 
   public Direction getDirection() {

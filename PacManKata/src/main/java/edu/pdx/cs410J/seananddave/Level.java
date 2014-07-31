@@ -1,5 +1,7 @@
 package edu.pdx.cs410J.seananddave;
 
+import static edu.pdx.cs410J.seananddave.Direction.RIGHT;
+
 /**
  * This class is represents a <code>Level</code>.
  */                                                                                 
@@ -45,7 +47,7 @@ public class Level{
   static Direction getPacManDirection(char c) {
     switch(c) {
       case '<':
-        return Direction.RIGHT;
+        return RIGHT;
       case '>':
         return Direction.LEFT;
       case 'V':
@@ -62,7 +64,29 @@ public class Level{
   }
 
   public void movePacManForward() {
+    PacMan pacMan = getPacMan();
+    PacMan.Position currentPosition = pacMan.getPosition();
+    int newX = currentPosition.getXCoordinate();
+    int newY = currentPosition.getYCoordinate();
 
+    switch (pacMan.getDirection()) {
+      case RIGHT:
+        newY = newY + 1;
+        break;
+    }
 
+    if (canPacManMoveTo(newX, newY)) {
+      pacMan.setXCoordinate(newX);
+      pacMan.setYCoordinate(newY);
+    }
+
+  }
+
+  private boolean canPacManMoveTo(int x, int y) {
+    return isGridEmptyAt(x, y);
+  }
+
+  private boolean isGridEmptyAt(int x, int y) {
+    return grid[x][y] == ' ';
   }
 }
