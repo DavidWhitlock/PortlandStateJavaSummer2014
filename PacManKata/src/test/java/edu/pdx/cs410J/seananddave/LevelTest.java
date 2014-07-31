@@ -100,7 +100,7 @@ public class LevelTest extends InvokeMainTestCase
   }
 
   @Test
-  public void pacManCantMoveRight() {
+  public void pacManCanMoveRight() {
     LevelBuilder lb = new LevelBuilder();
     lb.addLine("+--+");
     lb.addLine("|< |");
@@ -118,6 +118,71 @@ public class LevelTest extends InvokeMainTestCase
     PacMan.Position newPosition = pacman.getPosition();
     assertThat(newPosition.getXCoordinate(), equalTo(1));
     assertThat(newPosition.getYCoordinate(), equalTo(2));
+  }
+
+  @Test
+  public void pacManCanMoveLeft() {
+    LevelBuilder lb = new LevelBuilder();
+    lb.addLine("+--+");
+    lb.addLine("| >|");
+    lb.addLine("+--+");
+
+    Level level = lb.create();
+
+    PacMan pacman = level.getPacMan();
+    PacMan.Position originalPosition = pacman.getPosition();
+    assertThat(originalPosition.getXCoordinate(), equalTo(1));
+    assertThat(originalPosition.getYCoordinate(), equalTo(2));
+
+    level.movePacManForward();
+
+    PacMan.Position newPosition = pacman.getPosition();
+    assertThat(newPosition.getXCoordinate(), equalTo(1));
+    assertThat(newPosition.getYCoordinate(), equalTo(1));
+  }
+
+  @Test
+  public void pacManCanMoveUp() {
+    LevelBuilder lb = new LevelBuilder();
+    lb.addLine("+--+");
+    lb.addLine("+  +");
+    lb.addLine("|V |");
+    lb.addLine("+--+");
+
+    Level level = lb.create();
+
+    PacMan pacman = level.getPacMan();
+    PacMan.Position originalPosition = pacman.getPosition();
+    assertThat(originalPosition.getXCoordinate(), equalTo(2));
+    assertThat(originalPosition.getYCoordinate(), equalTo(1));
+
+    level.movePacManForward();
+
+    PacMan.Position newPosition = pacman.getPosition();
+    assertThat(newPosition.getXCoordinate(), equalTo(1));
+    assertThat(newPosition.getYCoordinate(), equalTo(1));
+  }
+
+  @Test
+  public void pacManCanMoveDown() {
+    LevelBuilder lb = new LevelBuilder();
+    lb.addLine("+--+");
+    lb.addLine("+^ +");
+    lb.addLine("|  |");
+    lb.addLine("+--+");
+
+    Level level = lb.create();
+
+    PacMan pacman = level.getPacMan();
+    PacMan.Position originalPosition = pacman.getPosition();
+    assertThat(originalPosition.getXCoordinate(), equalTo(1));
+    assertThat(originalPosition.getYCoordinate(), equalTo(1));
+
+    level.movePacManForward();
+
+    PacMan.Position newPosition = pacman.getPosition();
+    assertThat(newPosition.getXCoordinate(), equalTo(2));
+    assertThat(newPosition.getYCoordinate(), equalTo(1));
   }
 
 }

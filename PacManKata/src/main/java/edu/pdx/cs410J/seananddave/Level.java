@@ -73,6 +73,17 @@ public class Level{
       case RIGHT:
         newY = newY + 1;
         break;
+      case LEFT:
+        newY = newY - 1;
+        break;
+      case UP:
+        newX = newX - 1;
+        break;
+      case DOWN:
+        newX = newX + 1;
+        break;
+      default:
+        throw new IllegalStateException("Unknown direction: " + pacMan.getDirection());
     }
 
     if (canPacManMoveTo(newX, newY)) {
