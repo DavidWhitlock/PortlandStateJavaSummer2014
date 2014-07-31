@@ -13,6 +13,17 @@ public class Level{
   public Level(char[][] grid) {
     this.grid = grid;
     this.pacman = findPacManOnGrid();
+    fillEmptySpacesWithDots();
+  }
+
+  private void fillEmptySpacesWithDots() {
+    for (int i = 0; i < grid.length; i++) {
+      for (int j = 0; j < grid[i].length; j++) {
+        if (grid[i][j] == ' ') {
+          grid[i][j] = '.';
+        }
+      }
+    }
   }
 
   private PacMan findPacManOnGrid() {
@@ -99,5 +110,13 @@ public class Level{
 
   private boolean isGridEmptyAt(int x, int y) {
     return grid[x][y] == ' ';
+  }
+
+  public void drawTo(StringBuilder drawing) {
+    for (char[] row : grid) {
+      drawing.append(row);
+      drawing.append("\n");
+    }
+
   }
 }

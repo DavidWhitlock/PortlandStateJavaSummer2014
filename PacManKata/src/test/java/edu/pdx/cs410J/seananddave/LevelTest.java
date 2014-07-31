@@ -211,5 +211,25 @@ public class LevelTest extends InvokeMainTestCase
     assertThat(originalPosition, equalTo(pacman.getPosition()));
   }
 
+  @Test
+  public void emptySpacesOnLevelAreFilledWithDots() {
+    LevelBuilder lb = new LevelBuilder();
+    lb.addLine("+---+");
+    lb.addLine("| > |");
+    lb.addLine("+---+");
+
+    Level level = lb.create();
+
+    StringBuilder drawing = new StringBuilder();
+    level.drawTo(drawing);
+    String[] lines = drawing.toString().split("\n");
+
+    assertThat(lines.length, equalTo(3));
+    assertThat(lines[0], equalTo("+---+"));
+    assertThat(lines[1], equalTo("|.>.|"));
+    assertThat(lines[2], equalTo("+---+"));
+
+  }
+
 
 }
