@@ -9,6 +9,7 @@ public class Level{
 
   private final char[][] grid;
   private final PacMan pacman;
+  private int numberOfDotsEaten;
 
   public Level(char[][] grid) {
     this.grid = grid;
@@ -19,7 +20,7 @@ public class Level{
   private void fillEmptySpacesWithDots() {
     for (int i = 0; i < grid.length; i++) {
       for (int j = 0; j < grid[i].length; j++) {
-        if (grid[i][j] == ' ') {
+        if (cellIsEmpty(i, j)) {
           grid[i][j] = '.';
         }
       }
@@ -101,10 +102,18 @@ public class Level{
       pacMan.setXCoordinate(newX);
       pacMan.setYCoordinate(newY);
 
+      if (cellContainsDot(newX, newY)) {
+        this.numberOfDotsEaten++;
+      }
+
       clearCell(currentPosition);
       drawPacMan(newX, newY);
     }
 
+  }
+
+  private boolean cellContainsDot(int x, int y) {
+    return this.grid[x][y] == '.';
   }
 
   private void drawPacMan(int x, int y) {
@@ -132,8 +141,11 @@ public class Level{
   }
 
   private boolean canPacManMoveTo(int x, int y) {
-    char c = grid[x][y];
-    return c == ' ' || c == '.';
+    return cellIsEmpty(x, y) || cellContainsDot(x, y);
+  }
+
+  private boolean cellIsEmpty(int x, int y) {
+    return grid[x][y] == ' ';
   }
 
   public void drawTo(StringBuilder drawing) {
@@ -142,5 +154,9 @@ public class Level{
       drawing.append("\n");
     }
 
+  }
+
+  public int getNumberOfDotsEaten() {
+    return this.numberOfDotsEaten;
   }
 }

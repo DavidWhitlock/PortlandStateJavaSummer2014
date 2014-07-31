@@ -254,7 +254,21 @@ public class LevelTest extends InvokeMainTestCase
     assertThat(lines[0], equalTo("+---+"));
     assertThat(lines[1], equalTo("|> .|"));
     assertThat(lines[2], equalTo("+---+"));
+  }
 
+  @Test
+  public void pacManGetsAPointWhenHeEatsADot() {
+    LevelBuilder lb = new LevelBuilder();
+    lb.addLine("+---+");
+    lb.addLine("| > |");
+    lb.addLine("+---+");
+
+    Level level = lb.create();
+    assertThat(level.getNumberOfDotsEaten(), equalTo(0));
+
+    level.movePacManForward();
+
+    assertThat(level.getNumberOfDotsEaten(), equalTo(1));
   }
 
 }
