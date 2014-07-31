@@ -220,16 +220,41 @@ public class LevelTest extends InvokeMainTestCase
 
     Level level = lb.create();
 
-    StringBuilder drawing = new StringBuilder();
-    level.drawTo(drawing);
-    String[] lines = drawing.toString().split("\n");
+    String[] lines = getDrawnLevel(level);
 
     assertThat(lines.length, equalTo(3));
     assertThat(lines[0], equalTo("+---+"));
     assertThat(lines[1], equalTo("|.>.|"));
     assertThat(lines[2], equalTo("+---+"));
-
   }
 
+  private String[] getDrawnLevel(Level level) {
+    StringBuilder drawing = new StringBuilder();
+    level.drawTo(drawing);
+    return drawing.toString().split("\n");
+  }
+
+  @Test
+  public void pacManLeavesBehindAnEmptySpace() {
+    LevelBuilder lb = new LevelBuilder();
+    lb.addLine("+---+");
+    lb.addLine("| > |");
+    lb.addLine("+---+");
+
+    Level level = lb.create();
+    level.movePacManForward();
+
+    PacMan.Position newPosition = level.getPacMan().getPosition();
+    assertThat(newPosition.getXCoordinate(), equalTo(1));
+    assertThat(newPosition.getYCoordinate(), equalTo(1));
+
+    String[] lines = getDrawnLevel(level);
+
+    assertThat(lines.length, equalTo(3));
+    assertThat(lines[0], equalTo("+---+"));
+    assertThat(lines[1], equalTo("|> .|"));
+    assertThat(lines[2], equalTo("+---+"));
+
+  }
 
 }

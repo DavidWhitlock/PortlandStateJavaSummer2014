@@ -100,16 +100,40 @@ public class Level{
     if (canPacManMoveTo(newX, newY)) {
       pacMan.setXCoordinate(newX);
       pacMan.setYCoordinate(newY);
+
+      clearCell(currentPosition);
+      drawPacMan(newX, newY);
     }
 
   }
 
-  private boolean canPacManMoveTo(int x, int y) {
-    return isGridEmptyAt(x, y);
+  private void drawPacMan(int x, int y) {
+    this.grid[x][y] = getPacManDirectionChar(this.pacman.getDirection());
+
   }
 
-  private boolean isGridEmptyAt(int x, int y) {
-    return grid[x][y] == ' ';
+  private char getPacManDirectionChar(Direction direction) {
+    switch (direction) {
+      case UP:
+        return 'V';
+      case DOWN:
+        return '^';
+      case LEFT:
+        return '>';
+      case RIGHT:
+        return '<';
+      default:
+        throw new IllegalStateException("Unknown direction: " + direction);
+    }
+  }
+
+  private void clearCell(PacMan.Position position) {
+    this.grid[position.getXCoordinate()][position.getYCoordinate()] = ' ';
+  }
+
+  private boolean canPacManMoveTo(int x, int y) {
+    char c = grid[x][y];
+    return c == ' ' || c == '.';
   }
 
   public void drawTo(StringBuilder drawing) {
