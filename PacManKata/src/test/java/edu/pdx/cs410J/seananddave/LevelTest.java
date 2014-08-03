@@ -260,7 +260,7 @@ public class LevelTest extends InvokeMainTestCase
   public void pacManGetsAPointWhenHeEatsADot() {
     LevelBuilder lb = new LevelBuilder();
     lb.addLine("+---+");
-    lb.addLine("| > |");
+    lb.addLine("|.> |");
     lb.addLine("+---+");
 
     Level level = lb.create();
