@@ -1,4 +1,4 @@
-<module rename-to="airline">
+<module rename-to="PacMan">
   <inherits name="com.google.gwt.user.User"/>
   <inherits name='com.google.gwt.user.theme.standard.Standard'/>
   <inherits name='edu.pdx.cs410J.Projects'/>
