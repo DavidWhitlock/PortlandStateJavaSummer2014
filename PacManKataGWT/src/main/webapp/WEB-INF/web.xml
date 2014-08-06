@@ -17,6 +17,6 @@
 
   <!-- Default page to serve -->
   <welcome-file-list>
-    <welcome-file>AirlineGwt.html</welcome-file>
+    <welcome-file>PacManKata.html</welcome-file>
   </welcome-file-list>
 </web-app>

@@ -59,9 +59,9 @@
           <artifactId>gwt-maven-plugin</artifactId>
           <version>2.6.0</version>
             <configuration>
-                <runTarget>edu.pdx.cs410J.whitlock.AirlineGwt/AirlineGwt.html</runTarget>
+                <runTarget>edu.pdx.cs410J.whitlock.PacManKata/PacManKata.html</runTarget>
                 <modules>
-                  <module>edu.pdx.cs410J.whitlock.AirlineGwt</module>
+                  <module>edu.pdx.cs410J.whitlock.PacManKata</module>
                 </modules>
                 <extraJvmArgs>-Xmx512m</extraJvmArgs>
                 <style>DETAILED</style>

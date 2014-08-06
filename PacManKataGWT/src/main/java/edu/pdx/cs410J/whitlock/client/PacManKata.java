@@ -16,7 +16,7 @@ import java.util.Collection;
 /**
  * A basic GWT class that makes sure that we can send an airline back from the server
  */
-public class AirlineGwt implements EntryPoint {
+public class PacManKata implements EntryPoint {
   public void onModuleLoad() {
     Button button = new Button("Ping Server");
     button.addClickHandler(new ClickHandler() {
