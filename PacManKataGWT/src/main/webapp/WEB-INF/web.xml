@@ -7,12 +7,12 @@
   <!-- Servlets -->
   <servlet>
     <servlet-name>pingServlet</servlet-name>
-    <servlet-class>edu.pdx.cs410J.whitlock.server.PingServiceImpl</servlet-class>
+    <servlet-class>edu.pdx.cs410J.whitlock.server.PacManServiceImpl</servlet-class>
   </servlet>
 
   <servlet-mapping>
     <servlet-name>pingServlet</servlet-name>
-    <url-pattern>/PacMan/ping</url-pattern>
+    <url-pattern>/PacMan/pacman</url-pattern>
   </servlet-mapping>
 
   <!-- Default page to serve -->

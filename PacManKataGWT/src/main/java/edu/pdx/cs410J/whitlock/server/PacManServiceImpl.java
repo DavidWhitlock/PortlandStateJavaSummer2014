@@ -4,12 +4,12 @@ import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import edu.pdx.cs410J.AbstractAirline;
 import edu.pdx.cs410J.whitlock.client.Airline;
 import edu.pdx.cs410J.whitlock.client.Flight;
-import edu.pdx.cs410J.whitlock.client.PingService;
+import edu.pdx.cs410J.whitlock.client.PacManService;
 
 /**
  * The server-side implementation of the Airline service
  */
-public class PingServiceImpl extends RemoteServiceServlet implements PingService
+public class PacManServiceImpl extends RemoteServiceServlet implements PacManService
 {
     public AbstractAirline ping()
     {

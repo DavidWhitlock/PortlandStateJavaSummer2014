@@ -22,7 +22,7 @@ public class PacManKata implements EntryPoint {
     button.addClickHandler(new ClickHandler() {
         public void onClick( ClickEvent clickEvent )
         {
-            PingServiceAsync async = GWT.create( PingService.class );
+            PacManServiceAsync async = GWT.create( PacManService.class );
             async.ping( new AsyncCallback<AbstractAirline>() {
 
                 public void onFailure( Throwable ex )

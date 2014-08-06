@@ -6,7 +6,7 @@ import edu.pdx.cs410J.AbstractAirline;
 /**
  * The client-side interface to the ping service
  */
-public interface PingServiceAsync {
+public interface PacManServiceAsync {
 
   /**
    * Return the current date/time on the server
