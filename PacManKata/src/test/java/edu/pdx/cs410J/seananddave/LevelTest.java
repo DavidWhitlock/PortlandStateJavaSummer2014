@@ -271,4 +271,23 @@ public class LevelTest extends InvokeMainTestCase
     assertThat(level.getNumberOfDotsEaten(), equalTo(1));
   }
 
+
+  @Test
+  public void pacManIsDrawnInCorrectDirectionAfterMove() {
+    LevelBuilder lb = new LevelBuilder();
+    lb.addLine("+---+");
+    lb.addLine("|.> |");
+    lb.addLine("+---+");
+
+    Level level = lb.create();
+    level.getPacMan().setDirection(Direction.UP);
+
+    String[] lines = getDrawnLevel(level);
+
+    assertThat(lines.length, equalTo(3));
+    assertThat(lines[0], equalTo("+---+"));
+    assertThat(lines[1], equalTo("|.V.|"));
+    assertThat(lines[2], equalTo("+---+"));
+
+  }
 }

@@ -149,11 +149,12 @@ public class Level{
   }
 
   public void drawTo(StringBuilder drawing) {
+    drawPacMan(pacman.getPosition().getXCoordinate(), pacman.getPosition().getYCoordinate());
+
     for (char[] row : grid) {
       drawing.append(row);
       drawing.append("\n");
     }
-
   }
 
   public int getNumberOfDotsEaten() {
