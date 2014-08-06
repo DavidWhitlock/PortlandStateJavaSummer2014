@@ -12,7 +12,7 @@
 
   <servlet-mapping>
     <servlet-name>pingServlet</servlet-name>
-    <url-pattern>/airline/ping</url-pattern>
+    <url-pattern>/PacMan/ping</url-pattern>
   </servlet-mapping>
 
   <!-- Default page to serve -->
