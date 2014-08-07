@@ -17,6 +17,7 @@ import java.util.Collection;
  * A basic GWT class that makes sure that we can send an airline back from the server
  */
 public class PacManKata implements EntryPoint {
+  @Override
   public void onModuleLoad() {
     Button button = new Button("Ping Server");
     button.addClickHandler(new ClickHandler() {
@@ -25,11 +26,13 @@ public class PacManKata implements EntryPoint {
             PacManServiceAsync async = GWT.create( PacManService.class );
             async.ping( new AsyncCallback<AbstractAirline>() {
 
+                @Override
                 public void onFailure( Throwable ex )
                 {
                     Window.alert(ex.toString());
                 }
 
+                @Override
                 public void onSuccess( AbstractAirline airline )
                 {
                     StringBuilder sb = new StringBuilder( airline.toString() );

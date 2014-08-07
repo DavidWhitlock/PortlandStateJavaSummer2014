@@ -11,6 +11,7 @@ import edu.pdx.cs410J.whitlock.client.PacManService;
  */
 public class PacManServiceImpl extends RemoteServiceServlet implements PacManService
 {
+    @Override
     public AbstractAirline ping()
     {
         Airline airline = new Airline();
