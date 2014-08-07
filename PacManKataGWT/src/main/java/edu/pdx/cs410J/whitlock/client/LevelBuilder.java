@@ -1,4 +1,4 @@
-package edu.pdx.cs410J.seananddave;
+package edu.pdx.cs410J.whitlock.client;
 
 import java.util.ArrayList;
 import java.util.List;

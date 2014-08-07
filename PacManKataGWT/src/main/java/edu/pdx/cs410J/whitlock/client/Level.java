@@ -1,6 +1,6 @@
-package edu.pdx.cs410J.seananddave;
+package edu.pdx.cs410J.whitlock.client;
 
-import static edu.pdx.cs410J.seananddave.Direction.RIGHT;
+import static edu.pdx.cs410J.whitlock.client.Direction.RIGHT;
 
 /**
  * This class is represents a <code>Level</code>.

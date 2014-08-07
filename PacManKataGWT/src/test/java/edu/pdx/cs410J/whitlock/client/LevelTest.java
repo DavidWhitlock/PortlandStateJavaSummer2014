@@ -1,4 +1,4 @@
-package edu.pdx.cs410J.seananddave;
+package edu.pdx.cs410J.whitlock.client;
 
 import org.junit.Test;
 
