@@ -36,14 +36,7 @@ public class LevelEditor extends DockPanel {
   }
 
   private void saveLevelToServerAndPlayGame() {
-    LevelBuilder builder = new LevelBuilder();
-
-    String text = textArea.getText();
-    String[] lines = text.split("\n");
-    for (String line : lines) {
-      builder.addLine(line);
-    }
-
+    LevelBuilder builder = createLevelBuildFromTextArea();
     service.createLevel(builder, new AsyncCallback<Level>() {
       @Override
       public void onFailure(Throwable throwable) {
@@ -58,6 +51,17 @@ public class LevelEditor extends DockPanel {
       }
     });
 
+  }
+
+  private LevelBuilder createLevelBuildFromTextArea() {
+    LevelBuilder builder = new LevelBuilder();
+
+    String text = textArea.getText();
+    String[] lines = text.split("\n");
+    for (String line : lines) {
+      builder.addLine(line);
+    }
+    return builder;
   }
 
   private IsWidget createTextArea(int initialNumberOfRows, int initialNumberOfColumns) {
