@@ -45,11 +45,14 @@ public class LevelEditor extends DockPanel {
 
       @Override
       public void onSuccess(Level level) {
-        StringBuilder sb = new StringBuilder();
-        level.drawTo(sb);
-        Window.alert(sb.toString());
+        playGame(level);
       }
     });
+
+  }
+
+  private void playGame(Level level) {
+
 
   }
 
