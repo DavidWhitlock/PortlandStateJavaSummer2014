@@ -165,4 +165,12 @@ public class Level implements Serializable {
   public int getNumberOfDotsEaten() {
     return this.numberOfDotsEaten;
   }
+
+  public int getNumberOfRows() {
+    return this.grid.length;
+  }
+
+  public int getNumberOfColumns() {
+    return this.grid[0].length;
+  }
 }

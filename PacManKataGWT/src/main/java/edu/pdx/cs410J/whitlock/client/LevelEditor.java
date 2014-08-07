@@ -14,8 +14,10 @@ public class LevelEditor extends DockPanel {
   private TextBox numberOfColumnsTextBox;
   private TextArea textArea;
   private PacManServiceAsync service;
+  private PacManGame parent;
 
-  public LevelEditor(PacManServiceAsync service) {
+  public LevelEditor(PacManGame parent, PacManServiceAsync service) {
+    this.parent = parent;
     this.service = service;
     int initialNumberOfRows = 5;
     int initialNumberOfColumns = 5;
@@ -52,7 +54,7 @@ public class LevelEditor extends DockPanel {
   }
 
   private void playGame(Level level) {
-
+    parent.playGame(level);
 
   }
 
