@@ -10,7 +10,7 @@ public class PacManGame extends DeckPanel {
 
   public PacManGame(PacManServiceAsync service) {
     add(new LevelEditor(this, service));
-    player = new LevelPlayer();
+    player = new LevelPlayer(service);
     add(player);
 
     showWidget(LEVEL_EDITOR_INDEX);

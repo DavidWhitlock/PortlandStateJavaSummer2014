@@ -14,4 +14,8 @@ public interface PacManServiceAsync {
   void ping(AsyncCallback<AbstractAirline> async);
 
   void createLevel(LevelBuilder builder, AsyncCallback<Level> callback);
+
+  void moveForward(AsyncCallback<Level> asyncCallback);
+
+  void setDirection(Direction direction, AsyncCallback<Level> callback);
 }

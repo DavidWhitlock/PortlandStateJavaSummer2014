@@ -9,7 +9,10 @@ import edu.pdx.cs410J.whitlock.client.*;
  */
 public class PacManServiceImpl extends RemoteServiceServlet implements PacManService
 {
-    @Override
+
+  private Level level;
+
+  @Override
     public AbstractAirline ping()
     {
         Airline airline = new Airline();
@@ -19,7 +22,20 @@ public class PacManServiceImpl extends RemoteServiceServlet implements PacManSer
 
   @Override
   public Level createLevel(LevelBuilder builder) {
-    return builder.create();
+    level = builder.create();
+    return level;
+  }
+
+  @Override
+  public Level moveForward() {
+    level.movePacManForward();
+    return level;
+  }
+
+  @Override
+  public Level setDirection(Direction direction) {
+    level.getPacMan().setDirection(direction);
+    return level;
   }
 
   @Override
