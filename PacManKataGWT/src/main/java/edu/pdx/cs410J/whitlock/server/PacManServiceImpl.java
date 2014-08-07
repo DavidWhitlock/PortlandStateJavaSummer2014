@@ -21,4 +21,10 @@ public class PacManServiceImpl extends RemoteServiceServlet implements PacManSer
   public Level createLevel(LevelBuilder builder) {
     return builder.create();
   }
+
+  @Override
+  protected void doUnexpectedFailure(Throwable e) {
+    e.printStackTrace(System.err);
+    super.doUnexpectedFailure(e);
+  }
 }
