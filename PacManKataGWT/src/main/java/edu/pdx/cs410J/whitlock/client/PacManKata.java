@@ -47,6 +47,6 @@ public class PacManKata implements EntryPoint {
         }
     });
       RootPanel rootPanel = RootPanel.get();
-      rootPanel.add(button);
+      rootPanel.add(new LevelEditor());
   }
 }
