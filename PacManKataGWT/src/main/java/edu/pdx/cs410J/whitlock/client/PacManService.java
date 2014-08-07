@@ -15,4 +15,5 @@ public interface PacManService extends RemoteService {
    */
   public AbstractAirline ping();
 
+  Level createLevel(LevelBuilder builder);
 }

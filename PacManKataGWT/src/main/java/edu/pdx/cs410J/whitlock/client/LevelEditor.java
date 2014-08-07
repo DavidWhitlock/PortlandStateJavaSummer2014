@@ -5,6 +5,7 @@ import com.google.gwt.event.dom.client.BlurHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.*;
 
 public class LevelEditor extends DockPanel {
@@ -12,8 +13,10 @@ public class LevelEditor extends DockPanel {
   private TextBox numberOfRowsTextBox;
   private TextBox numberOfColumnsTextBox;
   private TextArea textArea;
+  private PacManServiceAsync service;
 
-  public LevelEditor() {
+  public LevelEditor(PacManServiceAsync service) {
+    this.service = service;
     int initialNumberOfRows = 5;
     int initialNumberOfColumns = 5;
     add(createRowAndColumnPanel(initialNumberOfRows, initialNumberOfColumns), NORTH);
@@ -33,7 +36,27 @@ public class LevelEditor extends DockPanel {
   }
 
   private void saveLevelToServerAndPlayGame() {
+    LevelBuilder builder = new LevelBuilder();
 
+    String text = textArea.getText();
+    String[] lines = text.split("\n");
+    for (String line : lines) {
+      builder.addLine(line);
+    }
+
+    service.createLevel(builder, new AsyncCallback<Level>() {
+      @Override
+      public void onFailure(Throwable throwable) {
+        Window.alert(throwable.getMessage());
+      }
+
+      @Override
+      public void onSuccess(Level level) {
+        StringBuilder sb = new StringBuilder();
+        level.drawTo(sb);
+        Window.alert(sb.toString());
+      }
+    });
 
   }
 

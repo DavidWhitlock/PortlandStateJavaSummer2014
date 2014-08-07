@@ -20,33 +20,31 @@ public class PacManKata implements EntryPoint {
   @Override
   public void onModuleLoad() {
     Button button = new Button("Ping Server");
+    final PacManServiceAsync service = GWT.create( PacManService.class );
     button.addClickHandler(new ClickHandler() {
         public void onClick( ClickEvent clickEvent )
         {
-            PacManServiceAsync async = GWT.create( PacManService.class );
-            async.ping( new AsyncCallback<AbstractAirline>() {
+            service.ping(new AsyncCallback<AbstractAirline>() {
 
-                @Override
-                public void onFailure( Throwable ex )
-                {
-                    Window.alert(ex.toString());
-                }
+              @Override
+              public void onFailure(Throwable ex) {
+                Window.alert(ex.toString());
+              }
 
-                @Override
-                public void onSuccess( AbstractAirline airline )
-                {
-                    StringBuilder sb = new StringBuilder( airline.toString() );
-                    Collection<AbstractFlight> flights = airline.getFlights();
-                    for ( AbstractFlight flight : flights ) {
-                        sb.append(flight);
-                        sb.append("\n");
-                    }
-                    Window.alert( sb.toString() );
+              @Override
+              public void onSuccess(AbstractAirline airline) {
+                StringBuilder sb = new StringBuilder(airline.toString());
+                Collection<AbstractFlight> flights = airline.getFlights();
+                for (AbstractFlight flight : flights) {
+                  sb.append(flight);
+                  sb.append("\n");
                 }
+                Window.alert(sb.toString());
+              }
             });
         }
     });
       RootPanel rootPanel = RootPanel.get();
-      rootPanel.add(new LevelEditor());
+      rootPanel.add(new LevelEditor(service));
   }
 }

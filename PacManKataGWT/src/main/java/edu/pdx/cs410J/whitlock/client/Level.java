@@ -1,20 +1,25 @@
 package edu.pdx.cs410J.whitlock.client;
 
+import java.io.Serializable;
+
 import static edu.pdx.cs410J.whitlock.client.Direction.RIGHT;
 
 /**
  * This class is represents a <code>Level</code>.
  */                                                                                 
-public class Level{
+public class Level implements Serializable {
 
-  private final char[][] grid;
-  private final PacMan pacman;
+  private char[][] grid;
+  private PacMan pacman;
   private int numberOfDotsEaten;
 
   public Level(char[][] grid) {
     this.grid = grid;
     this.pacman = findPacManOnGrid();
     fillEmptySpacesWithDots();
+  }
+
+  public Level() {
   }
 
   private void fillEmptySpacesWithDots() {

@@ -1,6 +1,8 @@
 package edu.pdx.cs410J.whitlock.client;
 
-public class PacMan {
+import java.io.Serializable;
+
+public class PacMan implements Serializable {
   private Direction direction;
   private int xCoordinate;
   private int yCoordinate;
@@ -9,6 +11,9 @@ public class PacMan {
     this.direction = direction;
     setXCoordinate(xCoordinate);
     setYCoordinate(yCoordinate);
+  }
+
+  public PacMan() {
   }
 
   void setYCoordinate(int yCoordinate) {

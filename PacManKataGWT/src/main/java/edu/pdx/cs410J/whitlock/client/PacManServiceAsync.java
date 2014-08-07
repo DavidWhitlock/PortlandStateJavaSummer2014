@@ -12,4 +12,6 @@ public interface PacManServiceAsync {
    * Return the current date/time on the server
    */
   void ping(AsyncCallback<AbstractAirline> async);
+
+  void createLevel(LevelBuilder builder, AsyncCallback<Level> callback);
 }

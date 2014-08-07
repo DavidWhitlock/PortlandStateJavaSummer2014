@@ -2,9 +2,7 @@ package edu.pdx.cs410J.whitlock.server;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import edu.pdx.cs410J.AbstractAirline;
-import edu.pdx.cs410J.whitlock.client.Airline;
-import edu.pdx.cs410J.whitlock.client.Flight;
-import edu.pdx.cs410J.whitlock.client.PacManService;
+import edu.pdx.cs410J.whitlock.client.*;
 
 /**
  * The server-side implementation of the Airline service
@@ -18,4 +16,9 @@ public class PacManServiceImpl extends RemoteServiceServlet implements PacManSer
         airline.addFlight( new Flight() );
         return airline;
     }
+
+  @Override
+  public Level createLevel(LevelBuilder builder) {
+    return builder.create();
+  }
 }

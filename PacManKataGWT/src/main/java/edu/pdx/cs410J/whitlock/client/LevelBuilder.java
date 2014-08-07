@@ -1,9 +1,10 @@
 package edu.pdx.cs410J.whitlock.client;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LevelBuilder {
+public class LevelBuilder implements Serializable {
 
 
   private List<String> lines = new ArrayList<>();
