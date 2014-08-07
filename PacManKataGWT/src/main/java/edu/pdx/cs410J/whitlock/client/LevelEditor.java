@@ -2,6 +2,8 @@ package edu.pdx.cs410J.whitlock.client;
 
 import com.google.gwt.event.dom.client.BlurEvent;
 import com.google.gwt.event.dom.client.BlurHandler;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.*;
 
@@ -16,6 +18,23 @@ public class LevelEditor extends DockPanel {
     int initialNumberOfColumns = 5;
     add(createRowAndColumnPanel(initialNumberOfRows, initialNumberOfColumns), NORTH);
     add(createTextArea(initialNumberOfRows, initialNumberOfColumns), CENTER);
+    add(createSaveAndPlayButton(), SOUTH);
+  }
+
+  private IsWidget createSaveAndPlayButton() {
+    Button button = new Button("Save and Play");
+    button.addClickHandler(new ClickHandler() {
+      @Override
+      public void onClick(ClickEvent clickEvent) {
+        saveLevelToServerAndPlayGame();
+      }
+    });
+    return button;
+  }
+
+  private void saveLevelToServerAndPlayGame() {
+
+
   }
 
   private IsWidget createTextArea(int initialNumberOfRows, int initialNumberOfColumns) {
